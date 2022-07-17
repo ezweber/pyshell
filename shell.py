@@ -1,5 +1,6 @@
 import os
 import subprocess
+import socket
 
 def quit_sh():
     print("Goodbye!")
@@ -61,7 +62,7 @@ def pfile(command):
         print("ERROR: Does that file exist?") 
 
 while True:
-    command = str(input("~ ")).split()
+    command = str(input("[" + socket.gethostname() + "] ")).split()
 
     if(command[0] == "quit"):
         quit_sh()
