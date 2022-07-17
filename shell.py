@@ -15,16 +15,20 @@ def help():
         rmdir - Deletes a directory
         echo - echos any text after it
         ls - Lists files and directories in the current directory
-        neoneofetch - Displays system info
+        cd - Change working directory
         sub - Runs shell commands
         mkfile - Creates a file and asks for text input
         rmfile - Deletes a file
         pfile - Prints the contents of a file
+        clear - Clears the screen
         """
     print(x)
 
 def subpro(command):
-    subprocess.run(command[1])
+    try:
+        subprocess.run(command[1])
+    except FileNotFoundError:
+        print("That command does not exist.")
 
 def mkdir(command):
     try:
@@ -62,10 +66,27 @@ def pfile(command):
        with open(command[1], "r") as file:
             print(file.read())
     except:
-        print("ERROR: Does that file exist?") 
+        print("ERROR: Does that file exist?")
+
+def cd(command):
+    try:
+        os.chdir(command[1])
+    except FileNotFoundError:
+        print("ERROR: Directory doesn't exist.")
+    except NotADirectoryError:
+        print("ERROR: That is not a directory")
+
+def ls():
+    print(*os.listdir("./"), sep = "\n")
+
+def clear():
+    for x in range(100):
+        print("\n")
+    
+os.chdir(os.environ['HOME'])
 
 while True:
-    command = str(input("[" + socket.gethostname() + "] ")).split()
+    command = str(input("[" + "\033[92m" + socket.gethostname() + " " + os.getcwd() + "\033[00m" + "] ")).split()
 
     if(command[0] == "quit"):
         quit_sh()
@@ -74,16 +95,13 @@ while True:
         mkdir(command)
 
     elif(command[0] == "ls"):
-        print(os.listdir("./"))
+        ls()
 
     elif(command[0] == "echo"):
         echo(command)
 
     elif(command[0] == "rmdir"):
         rmdir(command)
-
-    elif(command[0] == "neoneofetch"):
-        subprocess.run(["neoneofetch"])
 
     elif(command[0] == "help"):
         help()
@@ -99,6 +117,12 @@ while True:
     
     elif(command[0] == "pfile"):
         pfile(command)
+
+    elif(command[0] == "cd"):
+        cd(command)
+    
+    elif(command[0] == "clear"):
+        clear()
 
     else:
         print("Command not found, try \"help\"")
