@@ -17,6 +17,9 @@ def help():
         ls - Lists files and directories in the current directory
         neoneofetch - Displays system info
         sub - Runs shell commands
+        mkfile - Creates a file and asks for text input
+        rmfile - Deletes a file
+        pfile - Prints the contents of a file
         """
     print(x)
 
