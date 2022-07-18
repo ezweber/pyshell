@@ -12,7 +12,7 @@ def quit_sh():
 # Prints a help menu
 def help():
     x = """
-        Pyshell 1.0.1
+        Pyshell 1.0.2
 
         quit - Exits Pyshell
         mkdir - Makes a directory
