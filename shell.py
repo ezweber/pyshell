@@ -88,6 +88,8 @@ def cd(command):
     except NotADirectoryError:
         print("ERROR: That is not a directory")
 
+##########################################################
+
 # Lists all files and directories in the current working directory
 def ls():
     print(*os.listdir("./"), sep = "\n")
