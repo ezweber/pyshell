@@ -12,7 +12,7 @@ def quit_sh():
 # Prints a help menu
 def help():
     x = """
-        Pyshell 1.0.2
+        Pyshell 1.1.2
 
         quit - Exits Pyshell
         mkdir - Makes a directory
@@ -88,8 +88,6 @@ def cd(command):
     except NotADirectoryError:
         print("ERROR: That is not a directory")
 
-##########################################################
-
 # Lists all files and directories in the current working directory
 def ls():
     print(*os.listdir("./"), sep = "\n")
@@ -106,41 +104,28 @@ while True:
     # Gets the command and displays the hostname and path
     command = str(input(f"[\033[92m{socket.gethostname()} {os.getcwd()}\033[00m] ")).split()
 
-    if(command[0] == "quit"):
-        quit_sh()
-
-    elif(command[0] == "mkdir"):
-        mkdir(command)
-
-    elif(command[0] == "ls"):
-        ls()
-
-    elif(command[0] == "echo"):
-        echo(command)
-
-    elif(command[0] == "rmdir"):
-        rmdir(command)
-
-    elif(command[0] == "help"):
-        help()
-
-    elif(command[0] == "sub"):
-        subpro(command)
-
-    elif(command[0] == "mkfile"):
-        mkfile(command)
-
-    elif(command[0] == "rmfile"):
-        rmfile(command)
-    
-    elif(command[0] == "pfile"):
-        pfile(command)
-
-    elif(command[0] == "cd"):
-        cd(command)
-    
-    elif(command[0] == "clear"):
-        clear()
-
-    else:
-        print("Command not found, try \"help\"")
+    match command[0]:
+        case "quit":
+            quit_sh()
+        case "help":
+            help()
+        case "ls":
+            ls()
+        case "cd":
+            cd(command)
+        case "mkdir":
+            mkdir(command)
+        case "rmdir":
+            rmdir(command)
+        case "mkfile":
+            mkfile(command)
+        case "rmfile":
+            rmfile(command)
+        case "pfile":
+            pfile(command)
+        case "echo":
+            echo(command)
+        case "sub":
+            subpro(command)
+        case "clear":
+            clear()
