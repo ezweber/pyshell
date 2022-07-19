@@ -129,3 +129,5 @@ while True:
             subpro(command)
         case "clear":
             clear()
+        case _:
+            print("Cannot find a command by that name.")
