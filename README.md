@@ -9,6 +9,8 @@ Some commands like "mkdir" take input, seperate the command and the input with a
 
 ## Commands
 
+help - Prints list of commands and their usage
+
 quit - Exits Pyshell
 
 mkdir - Makes a directory
