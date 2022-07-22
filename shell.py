@@ -4,15 +4,21 @@ import os
 import socket
 import subprocess
 
-functions = os.listdir("funcs")
+home_path = os.path.expanduser("~")
+
+try:
+    functions = os.listdir(f"{home_path}/funcs")
+except FileNotFoundError:
+    print("You need the 'funcs' directory in your home directory.")
 
 # Sets the current working directory to the users home at startup
-os.chdir(os.path.expanduser("~"))
+os.chdir(home_path)
 
 while True:
     # Gets the command and displays the hostname and path
     cmd = str(input(f"[\033[92m{socket.gethostname()} {os.getcwd()}\033[00m] ")).split()
 
+    # Checks if the command is the in the funcs directory and runs it.
     if cmd[0] + ".py" in functions:
         exec(open(f"funcs/{cmd[0]}.py").read())
     else:
