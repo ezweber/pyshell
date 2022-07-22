@@ -7,7 +7,7 @@ import subprocess
 functions = os.listdir("funcs")
 
 # Sets the current working directory to the users home at startup
-os.chdir(os.environ['HOME'])
+os.chdir(os.path.expanduser("~"))
 
 while True:
     # Gets the command and displays the hostname and path
