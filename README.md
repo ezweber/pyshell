@@ -32,3 +32,5 @@ rmfile - Deletes a file
 pfile - Prints the contents of a file
 
 clear - Clears the screen
+
+script - Runs a script
