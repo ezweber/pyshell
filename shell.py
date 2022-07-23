@@ -10,6 +10,7 @@ try:
     functions = os.listdir(f"{home_path}/funcs")
 except FileNotFoundError:
     print("You need the 'funcs' directory in your home directory.")
+    quit()
 
 # Sets the current working directory to the users home at startup
 os.chdir(home_path)
